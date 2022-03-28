@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Surface-Aligned Neural Radiance Fields for Controllable 3D Human Synthesis</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap-4.4.1.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+  </head>
+
+  <!-- cover -->
+  <section>
+    <div class="jumbotron text-center mt-0">
+      <div class="container">
+          <div class="col-12">
+            <h2>Surface-Aligned Neural Radiance Fields for Controllable 3D Human Synthesis</h2>
+            <h4 style="color:#5a6268;">CVPR 2022</h4>
+            <hr>
+            <h6>
+                <div class="authors">
+                  <a href="http://xth430.github.io/" target="_blank">Tianhan Xu</a><sup> 1</sup>&#160;&#160;
+                  <a href="https://github.com/muupan/resume">Yasuhiro Fujita</a><sup> 2</sup>&#160;&#160;
+                  <a href="https://scholar.google.co.jp/citations?user=o3JW434AAAAJ&hl=en">Eiichi Matsumoto</a><sup> 2</sup>&#160;&#160;
+                </div>
+            </h6>
+            <p>
+                <div class="affiliations">
+                  <sup>1</sup><a>The University of Tokyo</a>&#160;&#160;
+                  <sup>2</sup><a>Preferred Networks</a>&#160;&#160;
+                </div>
+            </p>
+            <div class="row justify-content-center">
+              <div class="column">
+                <p class="mb-5"><a class="btn btn-large btn-light" href="https://arxiv.org/abs/2201.01683" role="button">
+                  <i class="fa fa-file"></i> Paper </a> </p>
+            </div>
+              <div class="column">
+                  <p class="mb-5"><a class="btn btn-large btn-light" href="https://github.com/pfnet-research/surface-aligned-nerf" role="button">
+                    <i class="fa fa-github-alt"></i> Code (coming soon) </a> </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- abstract -->
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          <h3>Abstract</h3>
+            <hr style="margin-top:0px">
+
+          <p class="text-left">
+            We propose a new method for reconstructing controllable implicit 3D human models from sparse multiview RGB videos. Our method defines the neural scene representation on the mesh surface points and signed distances from the surface of a human body mesh. We identify an indistinguishability issue that arises when a point in 3D space is mapped to its nearest surface point on a mesh for learning surface-aligned neural scene representation. To address this issue, we propose projecting a point onto a mesh surface using a barycentric interpolation with modified vertex normals. Experiments with the ZJU-MoCap and Human3.6M datasets show that our approach achieves a higher quality in a novel-view and novel-pose synthesis than existing methods. We also demonstrate that our method easily supports the control of body shape and clothes. 
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <br>
+
+<!-- Overview -->
+ <section>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center">
+          <h3>Overview</h3>
+          <hr style="margin-top:0px">
+          <div class="row" style="margin-bottom:5px">
+            <div class="col" style="text-align:center">
+              <img class="thumbnail" src="files/pipeline.png" style="width:100%; margin-bottom:20px">
+            </div>
+          </div>
+          <p class="text-left">
+            Given a query point \( \mathbf{x} \in \mathbb{R}^3 \), we use the proposed dispersed projection to project it onto a point \( \mathbf{s} \in \mathbb{R}^3 \) on the mesh surface to obtain a surface-aligned representation \( \mathcal{X} \). The representation \( \mathcal{X} \) and the view direction \( \mathbf{d}^* \) are then input into the NeRF to compute the color \( \mathbf{c} \) and density \( \sigma \) of the query point \( \mathbf{x} \).
+          </p>
+      </div>
+    </div>
+  </div>
+</section>
+<br>
+
+ <!-- Novel view synthesis for unseen pose -->
+ <section>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center">
+          <h3>Novel view synthesis for unseen pose</h3>
+          <hr style="margin-top:0px">
+          <video id="replay-video"
+                 autoplay
+                 loop
+                 muted
+                 preload
+                 width="100%">
+            <source src="files/unseen313.mp4"
+                    type="video/mp4">
+          </video>
+          <video id="replay-video"
+                 autoplay
+                 loop
+                 muted
+                 preload
+                 width="100%">
+            <source src="files/unseen390.mp4"
+                    type="video/mp4">
+          </video>
+      </div>
+    </div>
+  </div>
+</section>
+<br>
+
+<!-- Shape control -->
+<section>
+<div class="container">
+  <div class="row">
+    <div class="col-12 text-center">
+      <h3>Shape control</h3>
+      <hr style="margin-top:0px">
+      <p class="text-left">
+        By controlling the shape principal components of the body mesh, we can obtain rendering results of different body shapes.
+      </p>
+      <video id="replay-video"
+              autoplay
+              loop
+              muted
+              preload
+              width="100%">
+        <source src="files/shape_control.mp4"
+                type="video/mp4">
+      </video>
+      <p> Change 1st (upper) and 2nd (bottom) principal component of SMPL from -4 to +4.</p>
+    </div>
+  </div>
+</div>
+</section>
+<br>
+
+<!-- Clothes change -->
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center">
+        <h3>Clothes change</h3>
+        <hr style="margin-top:0px">
+        <p class="text-left">
+          Our method can replace trained NeRFs according to the different surface areas to achieve a similar effect of “changing clothes”.
+        </p>
+        <img src="files/clothes_change_source.png" alt="pipeline" width="100%"></img>
+        <p> Source appearance. </p>
+        <video id="replay-video"
+                autoplay
+                loop
+                muted
+                preload
+                width="100%">
+          <source src="files/clothes_change.mp4"
+                  type="video/mp4">
+        </video>
+        <p> Subject changes into different combinations of tops and bottoms. </p>
+      </div>
+    </div>
+  </div>
+  </section>
+  <br>
+
+<!-- citing -->
+<div class="container">
+  <div class="row ">
+    <div class="col-12">
+        <h3>Citation</h3>
+        <hr style="margin-top:0px">
+            <pre style="background-color: #e9eeef;padding: 1.25em 1.5em">
+<code>@inproceedings{xu2021sanerf,
+    author    = {Xu, Tianhan and Fujita, Yasuhiro and Matsumoto, Eiichi},
+    title     = {Surface-Aligned Neural Radiance Fields for Controllable 3D Human Synthesis},
+    booktitle = {CVPR},
+    year      = {2022},
+}</code></pre>
+          <hr>
+      </div>
+    </div>
+  </div>
+  <div id="content-inner">
+    <div class="section logos" style="text-align:center">
+      <a href="https://www.u-tokyo.ac.jp/en/" target="_blank"><IMG src="./logos/University_of_Tokyo_Logo.png" height="40" border="0"></a>
+      <a href="https://www.preferred.jp/en/" target="_blank"><IMG src="./logos/PFN_logo.png" height="40" border="0"></a>
+      </td>
+    </div>
+
+    <br>
+
+  <footer class="text-center" style="margin-bottom:10px">
+      Thanks to <a href="https://lioryariv.github.io/" target="_blank">Lior Yariv</a> for the website template.
+  </footer>
+
+</body>
+</html>
