@@ -1,0 +1,25 @@
+task: 'sa-nerf'
+
+gpus: [0]
+
+parent_cfg: 'configs/zju_mocap_exp/multi_view_313.yaml'
+
+network_module: 'lib.networks.surface_aligned_net'
+network_path: 'lib/networks/surface_aligned_net.py'
+
+human: 377
+
+train_dataset:
+    data_root: 'data/zju_mocap/CoreView_377'
+    human: 'CoreView_377'
+    ann_file: 'data/zju_mocap/CoreView_377/annots.npy'
+    split: 'train'
+
+test_dataset:
+    data_root: 'data/zju_mocap/CoreView_377'
+    human: 'CoreView_377'
+    ann_file: 'data/zju_mocap/CoreView_377/annots.npy'
+    split: 'test'
+
+# data options
+num_train_frame: 300
